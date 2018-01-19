@@ -1,0 +1,83 @@
+html {
+  height: 100%; }
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0; }
+
+.battery-box {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  align-items: center; }
+
+.battery {
+  height: 72px;
+  width: 200px;
+  border: 1px solid #f0f0f0;
+  position: relative;
+  background: #f0f0f0;
+  border-radius: 4px;
+  background: linear-gradient(#f0f0f0 0%, ghostwhite 50%, #ddd 100%);
+  box-shadow: 0px 1px 3px #bbb; }
+  .battery::before {
+    content: ' ';
+    position: absolute;
+    top: 25px;
+    width: 4px;
+    height: 22px;
+    left: -4px;
+    background: #bbb; }
+  .battery::after {
+    content: ' ';
+    position: absolute;
+    top: 25px;
+    width: 4px;
+    height: 22px;
+    left: -4px;
+    background: #bbb;
+    content: ' ';
+    position: absolute;
+    top: 25px;
+    width: 4px;
+    height: 22px;
+    right: -4px;
+    left: auto;
+    background: #bbb; }
+  .battery .inner {
+    width: 100%;
+    height: 100%; }
+  .battery .value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 19px;
+    color: #fff;
+    text-shadow: 0px 0px 34px #999;
+    font-family: sans-serif; }
+  .battery .charging {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 19px;
+    color: #fff;
+    text-shadow: 0px 0px 34px #999;
+    font-family: sans-serif;
+    height: 40px; }
+  .battery .level {
+    background: linear-gradient(#0c0 0%, #00aa00 50%, #0c0 100%);
+    box-shadow: 0 0 10px #0c0;
+    height: 100%;
+    display: block;
+    width: 75%; }
+
+#wrap .col {
+  float: left; }
+  #wrap .col a {
+    text-decoration: none; }
+
+/*# sourceMappingURL=app.css.map*/
