@@ -3,7 +3,6 @@
 var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var styleLintPlugin = require('stylelint-webpack-plugin');
 
 require('es6-promise').polyfill();
 
