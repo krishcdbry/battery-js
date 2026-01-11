@@ -1,49 +1,53 @@
 'use strict';
 
-var path = require('path');
-var webpack = require('webpack');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-
-require('es6-promise').polyfill();
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  entry: ['./src/app.js', './src/app.scss'],
+  mode: 'production',
+
+  entry: {
+    app: ['./src/app.js', './src/app.scss']
+  },
 
   output: {
-    path: __dirname,
-    filename: './dist/app.js'
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'app.js',
+    clean: true
   },
-  watch : true,
+
   plugins: [
-    // Specify the resulting CSS filename
-    new ExtractTextPlugin('./dist/app.css'),
+    new MiniCssExtractPlugin({
+      filename: 'app.css'
+    })
   ],
 
   module: {
     rules: [
       {
-        test: '/\.js$/',
+        test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
       },
       {
         test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            'css-loader',
-            'sass-loader'
-          ]
-        })
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader'
+        ]
       }
     ]
   },
 
   stats: {
-    // Colored output
     colors: true
   },
 
-  // Create Sourcemaps for the bundle
   devtool: 'source-map'
 };
